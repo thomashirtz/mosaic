@@ -2,7 +2,7 @@
 
 Mosaic is a Python library for performing rectangular decomposition of 2D binary images using the Generalized Delta-method (GDM) technique. This technique, proposed by Spiliotis and Mertzios in their paper ["Real-time computation of two-dimensional moments on binary images using image block representation"](https://ieeexplore.ieee.org/document/725368), allows for efficient identification and grouping of contiguous foreground regions into rectangular blocks.
 
-<img align="center" alt="Example from the 99-Shape Database of the LEMS at Brown University" src="./scripts/output.png">
+<img align="center" width="600" alt="Example from the 99-Shape Database of the LEMS at Brown University"  src="./scripts/output.png">
 
 ## Installation
 
