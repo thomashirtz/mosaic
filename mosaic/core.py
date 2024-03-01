@@ -1,11 +1,12 @@
 from typing import List
 
 import numpy as np
+import numpy.typing as npt
 
-from mosaic.types import Rectangle, Interval
+from mosaic.types import Interval, Rectangle
 
 
-def rectangular_decomposition(image: np.ndarray[np.bool_]) -> List[Rectangle]:
+def rectangular_decomposition(image: npt.NDArray[np.bool_]) -> List[Rectangle]:
     """
     Performs rectangular decomposition on a single binary image, identifying and grouping contiguous
     foreground regions into rectangular blocks.
@@ -29,7 +30,7 @@ def rectangular_decomposition(image: np.ndarray[np.bool_]) -> List[Rectangle]:
     height, width = image.shape
 
     # Initialize a list to store the rectangles found in the image
-    rectangles = []
+    rectangles: List[Rectangle] = []
 
     # Iterate over each line of the image
     for y in range(height):
@@ -55,24 +56,14 @@ def rectangular_decomposition(image: np.ndarray[np.bool_]) -> List[Rectangle]:
             matched = False
             for i, rectangle in enumerate(rectangles):
                 # Check if the interval matches exactly with the previous rectangle's interval
-                if rectangle.y_end == y-1 and interval.start == rectangle.x_start and interval.end == rectangle.x_end:
+                if rectangle.y_end == y - 1 and interval.start == rectangle.x_start and interval.end == rectangle.x_end:
                     # Extend the rectangle to include the new interval by updating y_end
-                    rectangles[i] = Rectangle(
-                        y_start=rectangle.y_start,
-                        y_end=y,
-                        x_start=rectangle.x_start,
-                        x_end=rectangle.x_end
-                    )
+                    rectangles[i] = Rectangle(y_start=rectangle.y_start, y_end=y, x_start=rectangle.x_start, x_end=rectangle.x_end)
                     matched = True
                     break
             # If the interval does not match any existing rectangle, start a new rectangle
             if not matched:
-                rectangle = Rectangle(
-                    y_start=y,
-                    y_end=y,
-                    x_start=interval[0],
-                    x_end=interval[1]
-                )
+                rectangle = Rectangle(y_start=y, y_end=y, x_start=interval[0], x_end=interval[1])
                 rectangles.append(rectangle)
 
     return rectangles
