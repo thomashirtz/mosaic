@@ -11,7 +11,8 @@ Further research and comparisons conducted by Suk et al. in their paper ["Rectan
 ## How the Algorithm Works
 
 <img align="right" width="150"  src="illustration.png">
-The GDM technique utilizes a step-by-step process to decompose 2D binary images into rectangular blocks. Here's a breakdown of how the algorithm operates: 
+The GDM technique utilizes a step-by-step process to decompose 2D binary images into rectangular blocks. Here's a breakdown of how the algorithm operates:  
+<br/><br/>  
 
 **Step 1: Identifying Object Level Intervals**  
 For each line `y` in the image, the algorithm identifies intervals of contiguous foreground pixels, referred to as "object level intervals."
