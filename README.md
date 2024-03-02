@@ -14,39 +14,58 @@ You can install Mosaic using pip:
 pip install git+https://github.com/thomashirtz/mosaic#egg=mosaic
 ```
 
+## Quick Start
+
+Get started with just a few lines of code. This simple example demonstrates how to perform rectangular decomposition on a binary image:
+
+```python
+from mosaic import rectangular_decomposition
+import numpy as np
+
+# Example binary image (replace with your own)
+image = np.random.randint(2, size=(100, 100), dtype=bool)
+rectangles = rectangular_decomposition(image)
+
+print("Identified rectangles:", rectangles)
+```
+
+To see `mosaic` in action, including how to use the visualization functionality, check out the [example script](scripts/example.py). This script guides you through reading a binary image, performing decomposition, and visualizing the results.
+
 ## Usage
 
 ### Single Image Decomposition
-
 To perform rectangular decomposition on a single binary image, you can use the `rectangular_decomposition` function:
 
 ```python
 from mosaic import rectangular_decomposition
 
-# Example usage
-image = ...  # Your binary image as a 2D NumPy array (W, H)
+image = ...  # Your binary image as a 2D NumPy array
 rectangles = rectangular_decomposition(image)
 ```
 
 This function returns a list of Rectangle, where each tuple represents a rectangular block identified within the image.
 
 ### Batch Processing
-
 Mosaic also provides a function for processing a batch of binary images:
 
 ```python
 from mosaic import batch_rectangular_decomposition
 
-# Example usage
-image_batch = ...  # Your batch of binary images as a 3D NumPy array (B, W, H)
+image_batch = ...  # Your batch of binary images
 batch_results = batch_rectangular_decomposition(image_batch)
 ```
 
 This function accepts a batch of binary images as input and returns a list of lists, where each inner list contains Rectangle namedtuples for the corresponding image in the batch.
 
-### Example
+### Visualizing Results
+Visualize the decomposition of an image:
 
-A minimal working example is available in [scripts/example.py](scripts/example.py), which includes a demonstration of how to use the plot function.
+```python
+from mosaic.utilities import plot_image_decomposition
+
+# Assuming 'image' and 'rectangles' are already defined
+plot_image_decomposition(binary_image, rectangle_list)
+```
 
 ## License
 
