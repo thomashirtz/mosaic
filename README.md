@@ -10,19 +10,19 @@ Further research and comparisons conducted by Suk et al. in their paper ["Rectan
 
 ## How the Algorithm Works
 
-The GQM technique utilizes a step-by-step process to decompose 2D binary images into rectangular blocks. Here's a breakdown of how the algorithm operates:
+The GDM technique utilizes a step-by-step process to decompose 2D binary images into rectangular blocks. Here's a breakdown of how the algorithm operates:
 
-**Step 1: Identifying Object Level Intervals**
-- For each line `y` in the image, the algorithm identifies intervals of contiguous foreground pixels, referred to as "object level intervals."
+**Step 1: Identifying Object Level Intervals**  
+For each line `y` in the image, the algorithm identifies intervals of contiguous foreground pixels, referred to as "object level intervals."
 
-**Step 2: Comparing Intervals with Previous Blocks**
-- The algorithm then compares these intervals to existing blocks that were identified up to the previous line (`y - 1`). This step determines if an interval is part of an existing block or if it marks the start of a new block.
+**Step 2: Comparing Intervals with Previous Blocks**  
+The algorithm then compares these intervals to existing blocks that were identified up to the previous line (`y - 1`). This step determines if an interval is part of an existing block or if it marks the start of a new block.
 
-**Step 3: Initiating New Blocks**
-- If an interval does not align with any existing block, it signifies the start of a new block. This new block is initialized based on the interval's position.
+**Step 3: Initiating New Blocks**  
+If an interval does not align with any existing block, it signifies the start of a new block. This new block is initialized based on the interval's position.
 
-**Step 4: Extending Existing Blocks**
-- When an interval matches with an existing block, the algorithm extends the block to include the new interval, marking the block's end at line `y`.
+**Step 4: Extending Existing Blocks**  
+When an interval matches with an existing block, the algorithm extends the block to include the new interval, marking the block's end at line `y`.
 
 This iterative process allows this algorithm to efficiently group contiguous foreground regions into rectangular blocks, optimizing both the speed and accuracy of binary image decomposition.
 
