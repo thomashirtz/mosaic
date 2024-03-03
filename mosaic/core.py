@@ -63,7 +63,7 @@ def rectangular_decomposition(image: npt.NDArray[np.bool_]) -> List[Rectangle]:
                     break
             # If the interval does not match any existing rectangle, start a new rectangle
             if not matched:
-                rectangle = Rectangle(y_start=y, y_end=y, x_start=interval[0], x_end=interval[1])
+                rectangle = Rectangle(y_start=y, y_end=y, x_start=interval.start, x_end=interval.end)
                 rectangles.append(rectangle)
 
     return rectangles
