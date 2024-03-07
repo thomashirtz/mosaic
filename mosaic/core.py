@@ -69,7 +69,7 @@ def rectangular_decomposition(image: npt.NDArray[np.bool_]) -> List[Rectangle]:
     return rectangles
 
 
-def batch_rectangular_decomposition(image_batch: np.ndarray) -> List[List[Rectangle]]:
+def batch_rectangular_decomposition(image_batch: npt.NDArray[np.bool_]) -> List[List[Rectangle]]:
     """
     Processes a batch of binary images, applying rectangular decomposition to each image in the batch.
     This function is designed to handle multiple images at once, iterating through each image and
